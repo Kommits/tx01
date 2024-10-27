@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: kafka-scenarios
+  datasource:
+    url: jdbc:mariadb://localhost:3307/demo_db
+    username: demo_user
+    password: demo_pass
+    driverClassName: org.mariadb.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+      dialect: org.hibernate.dialect.MariaDBDialect
+  kafka:
+    listener:
+      ack-mode: MANUAL_IMMEDIATE
+    consumer:
+      enable-auto-commit: false
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    properties:
+      spring.json.trusted.packages: '*'
